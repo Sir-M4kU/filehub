@@ -18,6 +18,7 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.6.4",
     "@cloudflare/workers-types": "^4.20240405.0",
     "wrangler": "^3.48.0"
   }
