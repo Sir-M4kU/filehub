@@ -5,11 +5,13 @@
     "types": [
       "@cloudflare/workers-types/2023-07-01"
     ],
-    "baseUrl": ".",
+    "baseUrl": "/home/m4ku/projects/javascript/filehub",
     "paths": {
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   }
 }
