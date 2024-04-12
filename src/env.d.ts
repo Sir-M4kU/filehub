@@ -1,6 +1,14 @@
 /// <reference types="astro/client" />
-type Runtime = import("@astrojs/cloudflare").Runtime<Env>;
+import type { R2Bucket, D1Database } from "@cloudflare/workers-types";
+import type { Runtime } from "@astrojs/cloudflare";
 
-declare namespace App {
-	interface Locals extends Runtime {}
+export interface Env {
+	BUCKET: R2Bucket;
+	DB: D1Database;
+}
+
+declare global {
+	namespace App {
+		interface Locals extends Runtime<Env> {}
+	}
 }
