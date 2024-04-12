@@ -1,0 +1,30 @@
+---
+import type { Session } from '@auth/core/types'
+
+interface Props {
+  session: Session | null
+}
+
+const { session } = Astro.props
+---
+
+<section class="flex flex-col items-center justify-center gap-2">
+  {
+    session ? (
+      <p>Welcome back {session.user?.name}</p>
+      <button id="logout" class="font-semibold text-lg p-1.5 w-24 bg-green-400 rounded-md">Log out</button>
+    ) : (
+      <button id="login" class="font-semibold text-lg p-1.5 w-24 bg-green-400 rounded-md">Log in</button>
+    )
+  }
+</section>
+
+<script>
+import { signIn, signOut } from 'auth-astro/client'
+
+const $loginBtn = document.getElementById('login')
+const $logoutBtn = document.getElementById('logout')
+
+if ($loginBtn) $loginBtn.addEventListener('click', () => signIn("github"))
+if ($logoutBtn) $logoutBtn.addEventListener('click', () => signOut())
+</script>

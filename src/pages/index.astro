@@ -1,10 +1,14 @@
 ---
 import RootLayout from "@/layouts/root-layout.astro"
+import Auth from "@/components/auth.astro"
+import { getSession } from "auth-astro/server"
 
-console.log(Astro.locals)
+const session = await getSession(Astro.request)
 ---
 
-<RootLayout title="FileHub" description="FileHub is a cloud storage service.">
-  <h1>FileHub</h1>
+<RootLayout title="FileHub | Home" description="FileHub is a cloud storage service.">
+  <h1 class="text-3xl font-bold mb-4">Welcome to FileHub</h1>
+  <Auth session={session} />
+  {session && <a href="/my-files" class="mt-4 text-lg font-semibold bg-green-400 p-1.5 rounded-md w-24 text-center">My Files</a>}
 </RootLayout>
 
